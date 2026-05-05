@@ -15,8 +15,10 @@ if ($action === 'logout') {
     AuthController::logout();
 }
 
+# Si no hay sesión activa, se muestra la vista de login o registro
 if (empty($_SESSION['usuario_id'])) {
     $vista = $_GET['vista'] ?? '';
+    # Si se solicita la vista de registro, se carga esa vista; de lo contrario, se muestra el login
     if ($vista === 'registro') {
         require_once __DIR__ . '/../views/registro.php';
     } else {
@@ -49,11 +51,13 @@ $routes = [
     'empleados.eliminar'   => [EmpleadoController::class,  'eliminar'],
 ];
 
+#Si la acción corresponde a una ruta definida, se ejecuta el método correspondiente
 if (isset($routes[$action])) {
     [$class, $method] = $routes[$action];
     $class::$method();
     exit;
 }
 
+#Si no hay acción específica, se carga la vista principal
 $vista = $_GET['vista'] ?? 'productos';
 require_once __DIR__ . '/../views/layout.php';

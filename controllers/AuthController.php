@@ -25,10 +25,10 @@ class AuthController
         $data = json_decode(file_get_contents('php://input'), true) ?? [];
 
         $resultado = AuthService::registrar(
-            trim($data['nombre']       ?? ''),
-            trim($data['username']     ?? ''),
-            $data['password']          ?? '',
-            $data['confirmacion']      ?? ''
+            trim($data['nombre']      ?? ''),
+            trim($data['username']    ?? ''),
+            $data['password']         ?? '',
+            $data['confirmacion']     ?? ''
         );
 
         echo json_encode($resultado);

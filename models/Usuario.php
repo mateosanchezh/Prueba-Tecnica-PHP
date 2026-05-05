@@ -19,8 +19,8 @@ class Usuario
         $this->nombre       = $nombre;
     }
 
-    public function getId(): ?int       { return $this->id; }
-    public function getUsername(): ?string    { return $this->username; }
+    public function getId(): ?int              { return $this->id; }
+    public function getUsername(): ?string     { return $this->username; }
     public function getPasswordHash(): ?string { return $this->passwordHash; }
-    public function getNombre(): ?string { return $this->nombre; }
+    public function getNombre(): ?string       { return $this->nombre; }
 }
